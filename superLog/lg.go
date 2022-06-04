@@ -1,6 +1,7 @@
 package superLog
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -92,4 +93,13 @@ func Fatal(v ...interface{}) {
 
 func Fatalf(msg string, v ...interface{}) {
 	Fatal(msg, v)
+}
+
+func Jsonify(v interface{}) string {
+	d, err := json.MarshalIndent(v, "", "  ")
+	if err != nil {
+		Error(err)
+		panic(err)
+	}
+	return string(d)
 }

@@ -23,7 +23,7 @@ var (
 
 func initFlags() {
 	v.AddConfigPath(".")
-	v.AddConfigPath("./etc/")
+	v.AddConfigPath("./tmp/config/")
 	err := v.BindPFlags(pflag.CommandLine)
 	if err != nil {
 		lg.Fatal("BindPFlags Error!")
@@ -69,7 +69,7 @@ func Parse() {
 		if err := v.ReadInConfig(); err != nil {
 			lg.Errorf("Failed to read on local file, ", err)
 		} else {
-			lg.Info("Read config from local file!")
+			lg.Infof("Read config from local file: %v!", *config)
 		}
 	}
 
