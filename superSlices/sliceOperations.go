@@ -9,3 +9,12 @@ func Reverse(slice []interface{}) []interface{} {
 	}
 	return ret
 }
+
+func SliceContainString(s []string, s1 string) bool {
+	for _, item := range s {
+		if item == s1 {
+			return true
+		}
+	}
+	return false
+}
